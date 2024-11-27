@@ -7,6 +7,8 @@ namespace Repositories.UnitOfWork
     {
         TContext Context { get; }
         IAccountRepository AccountRepository { get; }
+        ICategoryRepository CategoryRepository { get; }
+        IDutyRepository DutyRepository { get; }
         /// <summary>
         /// Start a transaction 
         /// </summary>

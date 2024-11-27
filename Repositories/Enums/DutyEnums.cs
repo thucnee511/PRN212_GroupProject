@@ -4,5 +4,6 @@
     {
         WORKING,
         ENDED,
+        REMOVED
     }
 }

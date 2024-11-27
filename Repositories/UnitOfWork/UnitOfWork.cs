@@ -11,6 +11,8 @@ namespace Repositories.UnitOfWork
         private TheCoffeeStoreContext? context;
         private IDbContextTransaction? transaction;
         private IAccountRepository? accountRepository;
+        private ICategoryRepository? categoryRepository;
+        private IDutyRepository? dutyRepository;
 
         public IAccountRepository AccountRepository
         {
@@ -19,6 +21,23 @@ namespace Repositories.UnitOfWork
                 return accountRepository ??= new AccountRepository(this);
             }
         }
+
+        public ICategoryRepository CategoryRepository
+        {
+            get
+            {
+                return categoryRepository ??= new CategoryRepository(this);
+            }
+        }
+
+        public IDutyRepository DutyRepository
+        {
+            get
+            {
+                return dutyRepository ??= new DutyRepository(this);
+            }
+        }
+
         private TheCoffeeStoreContext Context
         {
             get
