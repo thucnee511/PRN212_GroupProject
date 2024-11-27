@@ -17,6 +17,7 @@ namespace Services.Implements
             UnitOfWork.CategoryRepository.Delete(id);
             UnitOfWork.Save();
             UnitOfWork.Commit();
+            UnitOfWork.Dispose();
         }
 
         public override IEnumerable<Category> GetAll() => UnitOfWork.CategoryRepository.GetAll();
@@ -29,6 +30,7 @@ namespace Services.Implements
             UnitOfWork.CategoryRepository.Insert(entity);
             UnitOfWork.Save();
             UnitOfWork.Commit();
+            UnitOfWork.Dispose();
         }
 
         public override void Update(Category entity)
@@ -37,6 +39,7 @@ namespace Services.Implements
             UnitOfWork.CategoryRepository.Update(entity);
             UnitOfWork.Save();
             UnitOfWork.Commit();
+            UnitOfWork.Dispose();
         }
     }
 }
