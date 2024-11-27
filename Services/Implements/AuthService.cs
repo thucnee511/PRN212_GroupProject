@@ -19,6 +19,7 @@ namespace Services.Implements
             UnitOfWork.AccountRepository.Update(account);
             UnitOfWork.Save();
             UnitOfWork.Commit();
+            UnitOfWork.Dispose();
         }
 
         public Account Login(string username, string password)
@@ -46,6 +47,7 @@ namespace Services.Implements
             UnitOfWork.AccountRepository.Insert(account);
             UnitOfWork.Save();
             UnitOfWork.Commit();
+            UnitOfWork.Dispose();
         }
 
         public override void Delete(object id)
