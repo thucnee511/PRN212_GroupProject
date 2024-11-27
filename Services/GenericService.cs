@@ -7,25 +7,39 @@ namespace Services
     public abstract class GenericService<T> : IGenericService<T>, IDisposable where T : class
     {
         private bool isDisplosed;
-        private readonly IUnitOfWork<TheCoffeeStoreContext> unitOfWork;
+        private IUnitOfWork<TheCoffeeStoreContext>? unitOfWork;
         public GenericService(IUnitOfWork<TheCoffeeStoreContext> unitOfWork)
         {
             isDisplosed = false;
             this.unitOfWork = unitOfWork;
         }
 
+        public IUnitOfWork<TheCoffeeStoreContext> UnitOfWork
+        {
+            get
+            {
+                if (unitOfWork == null || isDisplosed)
+                {
+                    return unitOfWork = new UnitOfWork();
+                }
+                return unitOfWork;
+            }
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (!isDisplosed)
             {
-                if (disposing)
+                if (disposing && unitOfWork != null)
                 {
                     unitOfWork.Dispose();
+                    unitOfWork = null;
                 }
             }
             isDisplosed = true;
         }
-        public void Dispose(){
+        public void Dispose()
+        {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
