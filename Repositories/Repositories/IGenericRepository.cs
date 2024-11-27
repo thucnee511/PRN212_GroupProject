@@ -39,6 +39,6 @@
         /// <param name="id">
         /// The ID of the entity to delete.
         /// </param>
-        void Delete(T id);
+        void Delete(object id);
     }
 }

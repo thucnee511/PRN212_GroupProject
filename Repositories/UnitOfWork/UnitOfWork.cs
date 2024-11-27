@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 using Repositories.Entities;
+using Repositories.Repositories.Implements;
+using Repositories.Repositories.Interfaces;
 
 namespace Repositories.UnitOfWork
 {
@@ -8,6 +10,15 @@ namespace Repositories.UnitOfWork
         private bool isDisposed;
         private TheCoffeeStoreContext? context;
         private IDbContextTransaction? transaction;
+        private IAccountRepository? accountRepository;
+
+        public IAccountRepository AccountRepository
+        {
+            get
+            {
+                return accountRepository ??= new AccountRepository(this);
+            }
+        }
         private TheCoffeeStoreContext Context
         {
             get

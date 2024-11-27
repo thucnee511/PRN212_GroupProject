@@ -27,7 +27,12 @@ namespace Repositories.Repositories
         {
             get
             {
-                return context ??= unitOfWork.Context;
+                if (context == null || isDisposed)
+                {
+                    context = unitOfWork.Context;
+                    isDisposed = false;
+                }
+                return context;
             }
         }
 
@@ -66,6 +71,6 @@ namespace Repositories.Repositories
 
         public abstract void Insert(T entity);
         public abstract void Update(T entity);
-        public abstract void Delete(T id);
+        public abstract void Delete(object id);
     }
 }

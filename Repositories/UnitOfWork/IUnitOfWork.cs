@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Repositories.Repositories.Interfaces;
 
 namespace Repositories.UnitOfWork
 {
     public interface IUnitOfWork<out TContext> : IDisposable where TContext : DbContext, new()
     {
         TContext Context { get; }
+        IAccountRepository AccountRepository { get; }
         /// <summary>
         /// Start a transaction 
         /// </summary>
