@@ -103,6 +103,14 @@ namespace Repositories.UnitOfWork
                 {
                     context.Dispose();
                     context = null;
+                    accountRepository = null;
+                    categoryRepository = null;
+                    dutyRepository = null;
+                    employeeRepository = null;
+                    itemRepository = null;
+                    orderRepository = null;
+                    orderDetailRepository = null;
+                    voucherRepository = null;
                 }
             }
             isDisposed = true;
