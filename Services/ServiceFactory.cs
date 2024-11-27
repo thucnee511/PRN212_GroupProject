@@ -82,5 +82,18 @@ namespace Services
                 return dutyService;
             }
         }
+
+        private IEmployeeService? employeeService;  
+        public IEmployeeService EmployeeService
+        {
+            get
+            {
+                if (employeeService == null || isDisplosed)
+                {
+                    return employeeService = new EmployeeService(UnitOfWork);
+                }
+                return employeeService;
+            }
+        }
     }
 }
