@@ -11,5 +11,6 @@
         PENDING,
         PROCESSING,
         COMPLETED,
+        CANCELLED
     }
 }
