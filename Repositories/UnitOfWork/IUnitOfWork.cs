@@ -4,6 +4,7 @@ namespace Repositories.UnitOfWork
 {
     public interface IUnitOfWork<out TContext> : IDisposable where TContext : DbContext, new()
     {
+        TContext Context { get; }
         /// <summary>
         /// Start a transaction 
         /// </summary>
