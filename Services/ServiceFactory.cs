@@ -108,5 +108,18 @@ namespace Services
                 return itemService;
             }
         }
+
+        private IOrderService? orderService;
+        public IOrderService OrderService
+        {
+            get
+            {
+                if (orderService == null || isDisplosed)
+                {
+                    return orderService = new OrderService(UnitOfWork);
+                }
+                return orderService;
+            }
+        }
     }
 }

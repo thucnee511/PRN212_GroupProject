@@ -9,5 +9,6 @@ namespace Services
         IDutyService DutyService { get; }
         IEmployeeService EmployeeService { get; }
         IItemService ItemService { get; }
+        IOrderService OrderService { get; }
     }
 }
