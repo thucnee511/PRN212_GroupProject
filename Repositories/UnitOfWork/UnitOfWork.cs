@@ -17,6 +17,7 @@ namespace Repositories.UnitOfWork
         private IItemRepository? itemRepository;
         private IOrderRepository? orderRepository;
         private IOrderDetailRepository? orderDetailRepository;
+        private IVoucherRepository? voucherRepository;
 
         public IAccountRepository AccountRepository
         {
@@ -74,6 +75,13 @@ namespace Repositories.UnitOfWork
             }
         }
 
+        public IVoucherRepository VoucherRepository
+        {
+            get
+            {
+                return voucherRepository ??= new VoucherRepository(this);
+            }
+        }
         public TheCoffeeStoreContext Context
         {
             get

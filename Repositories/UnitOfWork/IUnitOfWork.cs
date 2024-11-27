@@ -13,6 +13,7 @@ namespace Repositories.UnitOfWork
         IItemRepository ItemRepository { get; }
         IOrderRepository OrderRepository { get; }
         IOrderDetailRepository OrderDetailRepository { get; }
+        IVoucherRepository VoucherRepository { get; }
         /// <summary>
         /// Start a transaction 
         /// </summary>
