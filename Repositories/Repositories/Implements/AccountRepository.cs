@@ -15,6 +15,8 @@ namespace Repositories.Repositories.Implements
         public override void Insert(Account entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
+            Guid guid = Guid.NewGuid();
+            entity.Id = guid.ToString();
             Entities.Add(entity);
         }
         public override void Update(Account entity)
