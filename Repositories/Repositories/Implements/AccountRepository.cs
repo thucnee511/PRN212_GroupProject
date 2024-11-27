@@ -30,9 +30,8 @@ namespace Repositories.Repositories.Implements
         {
             Account entity = GetById(id);
             ArgumentNullException.ThrowIfNull(entity);
-            entity.UpdatedAt = DateTime.UtcNow;
             entity.Status = AccountStatus.REMOVED;
-            Entities.Update(entity);
+            Update(entity);
         }
     }
 }
