@@ -8,5 +8,6 @@ namespace Services
         ICategoryService CategoryService { get; }
         IDutyService DutyService { get; }
         IEmployeeService EmployeeService { get; }
+        IItemService ItemService { get; }
     }
 }

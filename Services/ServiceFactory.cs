@@ -95,5 +95,18 @@ namespace Services
                 return employeeService;
             }
         }
+
+        private IItemService? itemService;
+        public IItemService ItemService
+        {
+            get
+            {
+                if (itemService == null || isDisplosed)
+                {
+                    return itemService = new ItemService(UnitOfWork);
+                }
+                return itemService;
+            }
+        }
     }
 }
