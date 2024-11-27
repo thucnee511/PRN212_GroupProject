@@ -13,6 +13,7 @@ namespace Repositories.UnitOfWork
         private IAccountRepository? accountRepository;
         private ICategoryRepository? categoryRepository;
         private IDutyRepository? dutyRepository;
+        private IEmployeeRepository? employeeRepository;
 
         public IAccountRepository AccountRepository
         {
@@ -38,7 +39,15 @@ namespace Repositories.UnitOfWork
             }
         }
 
-        private TheCoffeeStoreContext Context
+        public IEmployeeRepository EmployeeRepository
+        {
+            get
+            {
+                return employeeRepository ??= new EmployeeRepository(this);
+            }
+        }
+
+        public TheCoffeeStoreContext Context
         {
             get
             {
