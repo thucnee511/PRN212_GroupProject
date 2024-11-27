@@ -56,5 +56,18 @@ namespace Services
                 return authService;
             }
         }
+
+        private ICategoryService? categoryService;
+        public ICategoryService CategoryService
+        {
+            get
+            {
+                if (categoryService == null || isDisplosed)
+                {
+                    return categoryService = new CategoryService(UnitOfWork);
+                }
+                return categoryService;
+            }
+        }
     }
 }

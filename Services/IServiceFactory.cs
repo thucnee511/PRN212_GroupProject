@@ -5,5 +5,6 @@ namespace Services
     public interface IServiceFactory
     {
         IAuthService AuthService { get; }
+        ICategoryService CategoryService { get; }
     }
 }
