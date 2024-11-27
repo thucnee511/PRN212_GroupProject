@@ -10,6 +10,7 @@ namespace Repositories.UnitOfWork
         ICategoryRepository CategoryRepository { get; }
         IDutyRepository DutyRepository { get; }
         IEmployeeRepository EmployeeRepository { get; }
+        IItemRepository ItemRepository { get; }
         /// <summary>
         /// Start a transaction 
         /// </summary>

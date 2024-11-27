@@ -14,6 +14,7 @@ namespace Repositories.UnitOfWork
         private ICategoryRepository? categoryRepository;
         private IDutyRepository? dutyRepository;
         private IEmployeeRepository? employeeRepository;
+        private IItemRepository? itemRepository;
 
         public IAccountRepository AccountRepository
         {
@@ -44,6 +45,14 @@ namespace Repositories.UnitOfWork
             get
             {
                 return employeeRepository ??= new EmployeeRepository(this);
+            }
+        }
+
+        public IItemRepository ItemRepository
+        {
+            get
+            {
+                return itemRepository ??= new ItemRepository(this);
             }
         }
 
