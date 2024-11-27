@@ -11,7 +11,8 @@ namespace Repositories.UnitOfWork
         IDutyRepository DutyRepository { get; }
         IEmployeeRepository EmployeeRepository { get; }
         IItemRepository ItemRepository { get; }
-        IOrderRepository OrderRepository { get; } 
+        IOrderRepository OrderRepository { get; }
+        IOrderDetailRepository OrderDetailRepository { get; }
         /// <summary>
         /// Start a transaction 
         /// </summary>

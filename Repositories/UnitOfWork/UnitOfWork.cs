@@ -16,6 +16,7 @@ namespace Repositories.UnitOfWork
         private IEmployeeRepository? employeeRepository;
         private IItemRepository? itemRepository;
         private IOrderRepository? orderRepository;
+        private IOrderDetailRepository? orderDetailRepository;
 
         public IAccountRepository AccountRepository
         {
@@ -62,6 +63,14 @@ namespace Repositories.UnitOfWork
             get
             {
                 return orderRepository ??= new OrderRepository(this);
+            }
+        }
+
+        public IOrderDetailRepository OrderDetailRepository
+        {
+            get
+            {
+                return orderDetailRepository ??= new OrderDetailRepository(this);
             }
         }
 
