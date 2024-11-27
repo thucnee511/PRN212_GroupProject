@@ -69,5 +69,18 @@ namespace Services
                 return categoryService;
             }
         }
+
+        private IDutyService? dutyService;
+        public IDutyService DutyService
+        {
+            get
+            {
+                if (dutyService == null || isDisplosed)
+                {
+                    return dutyService = new DutyService(UnitOfWork);
+                }
+                return dutyService;
+            }
+        }
     }
 }

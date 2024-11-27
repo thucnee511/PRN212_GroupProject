@@ -6,5 +6,6 @@ namespace Services
     {
         IAuthService AuthService { get; }
         ICategoryService CategoryService { get; }
+        IDutyService DutyService { get; }
     }
 }
