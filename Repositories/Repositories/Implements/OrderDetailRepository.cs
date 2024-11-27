@@ -17,6 +17,9 @@ namespace Repositories.Repositories.Implements
             Entities.Remove(entity);
         }
 
+        public IEnumerable<OrderDetail> GetOrderDetailsByOrderId(string orderId) 
+            => Entities.Where(x => x.OrderId == orderId).ToList();
+
         public override void Insert(OrderDetail entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
