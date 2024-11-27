@@ -10,5 +10,6 @@ namespace Services
         IEmployeeService EmployeeService { get; }
         IItemService ItemService { get; }
         IOrderService OrderService { get; }
+        IVoucherService VoucherService { get; }
     }
 }

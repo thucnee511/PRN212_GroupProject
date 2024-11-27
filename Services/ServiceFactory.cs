@@ -121,5 +121,18 @@ namespace Services
                 return orderService;
             }
         }
+
+        private IVoucherService? voucherService;
+        public IVoucherService VoucherService
+        {
+            get
+            {
+                if (voucherService == null || isDisplosed)
+                {
+                    return voucherService = new VoucherService(UnitOfWork);
+                }
+                return voucherService;
+            }
+        }
     }
 }
