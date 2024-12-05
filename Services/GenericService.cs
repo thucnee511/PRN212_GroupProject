@@ -46,8 +46,8 @@ namespace Services
 
         public abstract IEnumerable<T> GetAll();
         public abstract T GetById(object id);
-        public abstract void Insert(T entity);
-        public abstract void Update(T entity);
-        public abstract void Delete(object id);
+        public abstract T Insert(T entity);
+        public abstract T Update(T entity);
+        public abstract T Delete(object id);
     }
 }

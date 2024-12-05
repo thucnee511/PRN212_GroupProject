@@ -11,15 +11,16 @@ namespace Services.Implements
         {
         }
 
-        public void ChangePassword(string username, string oldPassword, string newPassword)
+        public Account ChangePassword(string username, string oldPassword, string newPassword)
         {
             Account account = Login(username, oldPassword);
             account.Password = newPassword;
             UnitOfWork.Begin();
-            UnitOfWork.AccountRepository.Update(account);
+            Account entity = UnitOfWork.AccountRepository.Update(account);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return entity;
         }
 
         public Account Login(string username, string password)
@@ -37,20 +38,21 @@ namespace Services.Implements
             return account;
         }
 
-        public void Register(Account account)
+        public Account Register(Account account)
         {
             ArgumentNullException.ThrowIfNull(account.Username, "Username is required");
             ArgumentNullException.ThrowIfNull(account.Password, "Password is required");
             account.Role = AccountRole.MANAGER;
             account.Status = AccountStatus.ACTIVE;
             UnitOfWork.Begin();
-            UnitOfWork.AccountRepository.Insert(account);
+            Account entity = UnitOfWork.AccountRepository.Insert(account);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return entity;
         }
 
-        public override void Delete(object id)
+        public override Account Delete(object id)
         {
             throw new NotSupportedException("Thic function is not supported in this service");
         }
@@ -65,12 +67,12 @@ namespace Services.Implements
             throw new NotSupportedException("Thic function is not supported in this service");
         }
 
-        public override void Insert(Account entity)
+        public override Account Insert(Account entity)
         {
             throw new NotSupportedException("Thic function is not supported in this service");
         }
 
-        public override void Update(Account entity)
+        public override Account Update(Account entity)
         {
             throw new NotSupportedException("Thic function is not supported in this service");
         }

@@ -11,36 +11,39 @@ namespace Services.Implements
         {
         }
 
-        public override void Delete(object id)
+        public override Employee Delete(object id)
         {
             UnitOfWork.Begin();
-            UnitOfWork.EmployeeRepository.Delete(id);
+            Employee entity = UnitOfWork.EmployeeRepository.Delete(id);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return entity;
         }
 
         public override IEnumerable<Employee> GetAll() => UnitOfWork.EmployeeRepository.GetAll();
 
         public override Employee GetById(object id) => UnitOfWork.EmployeeRepository.GetById(id);
 
-        public override void Insert(Employee entity)
+        public override Employee Insert(Employee entity)
         {
             entity.Status = EmployeeStatus.ACTIVE;
             UnitOfWork.Begin();
-            UnitOfWork.EmployeeRepository.Insert(entity);
+            Employee emp = UnitOfWork.EmployeeRepository.Insert(entity);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return emp;
         }
 
-        public override void Update(Employee entity)
+        public override Employee Update(Employee entity)
         {
             UnitOfWork.Begin();
-            UnitOfWork.EmployeeRepository.Update(entity);
+            Employee emp = UnitOfWork.EmployeeRepository.Update(entity);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return emp;
         }
     }
 }

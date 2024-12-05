@@ -11,35 +11,38 @@ namespace Services.Implements
         {
         }
 
-        public override void Delete(object id)
+        public override Category Delete(object id)
         {
             UnitOfWork.Begin();
-            UnitOfWork.CategoryRepository.Delete(id);
+            Category entity = UnitOfWork.CategoryRepository.Delete(id);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return entity;
         }
 
         public override IEnumerable<Category> GetAll() => UnitOfWork.CategoryRepository.GetAll();
 
         public override Category GetById(object id) => UnitOfWork.CategoryRepository.GetById(id);
 
-        public override void Insert(Category entity)
+        public override Category Insert(Category entity)
         {
             UnitOfWork.Begin();
-            UnitOfWork.CategoryRepository.Insert(entity);
+            Category ct = UnitOfWork.CategoryRepository.Insert(entity);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return ct;
         }
 
-        public override void Update(Category entity)
+        public override Category Update(Category entity)
         {
             UnitOfWork.Begin();
-            UnitOfWork.CategoryRepository.Update(entity);
+            Category ct = UnitOfWork.CategoryRepository.Update(entity);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return ct;
         }
     }
 }

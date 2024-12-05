@@ -10,13 +10,14 @@ namespace Services.Implements
         {
         }
 
-        public override void Delete(object id)
+        public override Order Delete(object id)
         {
             UnitOfWork.Begin();
-            UnitOfWork.OrderRepository.Delete(id);
+            Order entity = UnitOfWork.OrderRepository.Delete(id);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return entity;
         }
 
         public override IEnumerable<Order> GetAll() => UnitOfWork.OrderRepository.GetAll();
@@ -28,22 +29,24 @@ namespace Services.Implements
             return entity;
         }
 
-        public override void Insert(Order entity)
+        public override Order Insert(Order entity)
         {
             UnitOfWork.Begin();
-            UnitOfWork.OrderRepository.Insert(entity);
+            Order o = UnitOfWork.OrderRepository.Insert(entity);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return o;
         }
 
-        public override void Update(Order entity)
+        public override Order Update(Order entity)
         {
             UnitOfWork.Begin();
-            UnitOfWork.OrderRepository.Update(entity);
+            Order o = UnitOfWork.OrderRepository.Update(entity);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return o;
         }
     }
 }

@@ -10,35 +10,38 @@ namespace Services.Implements
         {
         }
 
-        public override void Delete(object id)
+        public override Item Delete(object id)
         {
             UnitOfWork.Begin();
-            UnitOfWork.ItemRepository.Delete(id);
+            Item entity = UnitOfWork.ItemRepository.Delete(id);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return entity;
         }
 
         public override IEnumerable<Item> GetAll() => UnitOfWork.ItemRepository.GetAll();
 
         public override Item GetById(object id) => UnitOfWork.ItemRepository.GetById(id);
 
-        public override void Insert(Item entity)
+        public override Item Insert(Item entity)
         {
             UnitOfWork.Begin();
-            UnitOfWork.ItemRepository.Insert(entity);
+            Item itm = UnitOfWork.ItemRepository.Insert(entity);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return itm;
         }
 
-        public override void Update(Item entity)
+        public override Item Update(Item entity)
         {
             UnitOfWork.Begin();
-            UnitOfWork.ItemRepository.Update(entity);
+            Item itm = UnitOfWork.ItemRepository.Update(entity);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return itm;
         }
     }
 }

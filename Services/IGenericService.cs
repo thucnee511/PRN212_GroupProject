@@ -8,8 +8,8 @@ namespace Services
         IUnitOfWork<TheCoffeeStoreContext> UnitOfWork { get; }
         IEnumerable<T> GetAll();
         T GetById(object id);
-        void Insert(T entity);
-        void Update(T entity);
-        void Delete(object id);
+        T Insert(T entity);
+        T Update(T entity);
+        T Delete(object id);
     }
 }

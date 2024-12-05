@@ -10,35 +10,38 @@ namespace Services.Implements
         {
         }
 
-        public override void Delete(object id)
+        public override Voucher Delete(object id)
         {
             UnitOfWork.Begin();
-            UnitOfWork.VoucherRepository.Delete(id);
+            Voucher entity = UnitOfWork.VoucherRepository.Delete(id);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return entity;
         }
 
         public override IEnumerable<Voucher> GetAll() => UnitOfWork.VoucherRepository.GetAll();
 
         public override Voucher GetById(object id) => UnitOfWork.VoucherRepository.GetById(id);
 
-        public override void Insert(Voucher entity)
+        public override Voucher Insert(Voucher entity)
         {
             UnitOfWork.Begin();
-            UnitOfWork.VoucherRepository.Insert(entity);
+            Voucher v = UnitOfWork.VoucherRepository.Insert(entity);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return v;
         }
 
-        public override void Update(Voucher entity)
+        public override Voucher Update(Voucher entity)
         {
             UnitOfWork.Begin();
-            UnitOfWork.VoucherRepository.Update(entity);
+            Voucher v = UnitOfWork.VoucherRepository.Update(entity);
             UnitOfWork.Save();
             UnitOfWork.Commit();
             UnitOfWork.Dispose();
+            return v;
         }
     }
 }
