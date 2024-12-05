@@ -69,8 +69,8 @@ namespace Repositories.Repositories
         public IEnumerable<T> GetAll() => Entities.ToList();
         public T GetById(object id) => Entities.Find(id);
 
-        public abstract void Insert(T entity);
-        public abstract void Update(T entity);
-        public abstract void Delete(object id);
+        public abstract T Insert(T entity);
+        public abstract T Update(T entity);
+        public abstract T Delete(object id);
     }
 }

@@ -11,27 +11,29 @@ namespace Repositories.Repositories.Implements
         {
         }
 
-        public override void Delete(object id)
+        public override Voucher Delete(object id)
         {
             Voucher entity = GetById(id);
             ArgumentNullException.ThrowIfNull(entity);
             entity.Status = VoucherStatus.INVALID;
-            Update(entity);
+            return Update(entity);
         }
 
-        public override void Insert(Voucher entity)
+        public override Voucher Insert(Voucher entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
             Guid guid = Guid.NewGuid();
             entity.Id = guid.ToString();
             Entities.Add(entity);
+            return entity;
         }
 
-        public override void Update(Voucher entity)
+        public override Voucher Update(Voucher entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
             entity.UpdatedAt = DateTime.UtcNow;
             Entities.Update(entity);
+            return entity;
         }
     }
 }

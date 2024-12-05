@@ -16,27 +16,29 @@ namespace Repositories.Repositories.Implements
         {
         }
 
-        public override void Delete(object id)
+        public override Duty Delete(object id)
         {
             Duty entity = GetById(id);
             ArgumentNullException.ThrowIfNull(entity);
             entity.Status = DutyStatus.REMOVED;
-            Update(entity);
+            return Update(entity);
         }
 
-        public override void Insert(Duty entity)
+        public override Duty Insert(Duty entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
             Guid guid = Guid.NewGuid();
             entity.Id = guid.ToString();
             Entities.Add(entity);
+            return entity;
         }
 
-        public override void Update(Duty entity)
+        public override Duty Update(Duty entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
             entity.UpdatedAt = DateTime.UtcNow;
             Entities.Update(entity);
+            return entity;
         }
     }
 }

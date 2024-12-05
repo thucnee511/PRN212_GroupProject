@@ -12,26 +12,28 @@ namespace Repositories.Repositories.Implements
         }
         public Account GetByUsername(string username) => Entities.FirstOrDefault(x => x.Username == username);
 
-        public override void Insert(Account entity)
+        public override Account Insert(Account entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
             Guid guid = Guid.NewGuid();
             entity.Id = guid.ToString();
             Entities.Add(entity);
+            return entity;
         }
-        public override void Update(Account entity)
+        public override Account Update(Account entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
             entity.UpdatedAt = DateTime.UtcNow;
             Entities.Update(entity);
+            return entity;
         }
 
-        public override void Delete(object id)
+        public override Account Delete(object id)
         {
             Account entity = GetById(id);
             ArgumentNullException.ThrowIfNull(entity);
             entity.Status = AccountStatus.REMOVED;
-            Update(entity);
+            return Update(entity);
         }
     }
 }

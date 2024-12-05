@@ -25,20 +25,20 @@
         /// <param name="entity">
         /// The entity to insert.
         /// </param>
-        void Insert(T entity);
+        T Insert(T entity);
         /// <summary>
         /// Updates an existing entity in the repository.
         /// </summary>
         /// <param name="entity">
         /// The entity to update.
         /// </param>
-        void Update(T entity);
+        T Update(T entity);
         /// <summary>
         /// Deletes an entity from the repository.
         /// </summary>
         /// <param name="id">
         /// The ID of the entity to delete.
         /// </param>
-        void Delete(object id);
+        T Delete(object id);
     }
 }

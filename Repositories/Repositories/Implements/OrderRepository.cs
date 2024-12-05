@@ -11,27 +11,29 @@ namespace Repositories.Repositories.Implements
         {
         }
 
-        public override void Delete(object id)
+        public override Order Delete(object id)
         {
             Order entity = GetById(id);
             ArgumentNullException.ThrowIfNull(entity);
             entity.Status = OrderStatus.CANCELLED;
-            Update(entity);
+            return Update(entity);
         }
 
-        public override void Insert(Order entity)
+        public override Order Insert(Order entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
             Guid guid = Guid.NewGuid();
             entity.Id = guid.ToString();
             Entities.Add(entity);
+            return entity;
         }
 
-        public override void Update(Order entity)
+        public override Order Update(Order entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
             entity.UpdatedAt = DateTime.UtcNow;
             Entities.Update(entity);
+            return entity;
         }
     }
 }

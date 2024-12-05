@@ -10,28 +10,31 @@ namespace Repositories.Repositories.Implements
         {
         }
 
-        public override void Delete(object id)
+        public override OrderDetail Delete(object id)
         {
             OrderDetail entity = GetById(id);
             ArgumentNullException.ThrowIfNull(entity);
             Entities.Remove(entity);
+            return entity;
         }
 
         public IEnumerable<OrderDetail> GetOrderDetailsByOrderId(string orderId) 
             => Entities.Where(x => x.OrderId == orderId).ToList();
 
-        public override void Insert(OrderDetail entity)
+        public override OrderDetail Insert(OrderDetail entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
             Guid guid = Guid.NewGuid();
             entity.Id = guid.ToString();
             Entities.Add(entity);
+            return entity;
         }
 
-        public override void Update(OrderDetail entity)
+        public override OrderDetail Update(OrderDetail entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
             Entities.Update(entity);
+            return entity;
         }
     }
 }
